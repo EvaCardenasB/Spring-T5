@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<title>Clientes</title>
+
+<style type="text/css">
+table {
+	border-collapse: collapse;
+}
+
+table, td {
+	border: 1px solid black;
+}
+
+th, td {
+	padding: 5px;
+}
+
+.btn {
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 14px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+</style>
+
+</head>
+<body>
+
+	<div>
+		<h2>Clientes</h2>
+		<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+			th:if="${mensaje != null}" th:text="${mensaje}" class="alert">
+		</div>
+		<div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Primer apellido</th>
+						<th>Segundo apellido</th>
+						<th>Fecha de nacimiento</th>
+						<th>Dni</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="client : ${clients}">
+						<td th:text="${client.name}"></td>
+						<td th:text="${client.surname1}"></td>
+						<td th:text="${client.surname2}"></td>
+						<td th:text="${client.dateOfBirth}"></td>
+						<td th:text="${client.dni}"></td>
+						<td>
+							<form th:action="@{/client/eliminar}" method="post">
+								<input type="hidden" name="id" th:value="${client.id}" />
+								<button type="submit" class="btn">Eliminar</button>
+								<a class="btn" th:href="@{/client/editar/} + ${client.id}">Editar</a>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+</body>
+</html>

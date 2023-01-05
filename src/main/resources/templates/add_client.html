@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+
+<title>Clientes</title>
+
+</head>
+
+<body>
+	<div>
+		<h2>Añadir cliente</h2>
+		<div th:classappend="'alert-' + (${clase != null} ? ${clase} : info)"
+			th:if="${mensaje != null}" th:text="${mensaje}">
+		</div>
+		
+		<!-- Formulario para guardar un objeto cliente en la base de datos-->
+		<form th:object="${client}" th:action="@{/client/agregar}"
+			method="post">
+			<!-- Input Nombre-->
+			<div>
+				<label for="name">Nombre:</label> <input th:field="*{name}"
+					id="name" placeholder="Escriba su nombre" type="text"
+					th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : ''">
+				<div th:errors="*{name}"></div>
+			</div>
+			<!-- Input Primer Apellido-->
+			<div>
+				<label for="surname1">Primer Apellido:</label> <input
+					th:field="*{surname1}" id="surname1"
+					placeholder="Escriba su primer apellido..." type="text"
+					th:classappend="${#fields.hasErrors('surname1')} ? 'is-invalid' : ''">
+				<div th:errors="*{surname1}"></div>
+			</div>
+			<!-- Segundo apellido-->
+			<div>
+				<label for="surname2">Segundo apellido:</label> <input
+					th:field="*{surname2}" id="surname2"
+					placeholder="Escriba su segundo apellido..." type="text"
+					th:classappend="${#fields.hasErrors('surname2')} ? 'is-invalid' : ''">
+				<div th:errors="*{surname2}"></div>
+			</div>
+
+			<!-- Input fecha de nacimiento-->
+			<div>
+				<label for="dateOfBirth">Fecha de nacimiento:</label> <input
+					th:field="*{dateOfBirth}" id="dateOfBirth"
+					placeholder="Escriba su fecha de nacimiento" type="text"
+					th:classappend="${#fields.hasErrors('dateOfBirth')} ? 'is-invalid' : ''">
+				<div th:errors="*{dateOfBirth}"></div>
+			</div>
+
+			<!-- Input codigo postal-->
+			<div>
+				<label for="dni">DNI:</label> <input th:field="*{dni}" id="dni"
+					placeholder="Escriba su dni" type="text"
+					th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''">
+				<div th:errors="*{dni}"></div>
+
+			</div>
+			<button type="submit">Añadir cliente</button>
+		</form>
+	</div>
+
+
+
+</body>
+</html>
