@@ -65,9 +65,7 @@ public class ClientManagementServiceImpl implements ClientManagementServiceI {
 	}
 
 	/**
-	 * Buscar clientes por id .orElse(null), si no encuentra el cliente que devuelva
-	 * null, tuve que añadir esto porque me devolvía un optional (no tengo claro el
-	 * por qué)
+	 * Buscar clientes por id
 	 */
 	@Override
 	public Client searchById(final Long clientId) {

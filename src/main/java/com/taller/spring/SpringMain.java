@@ -10,11 +10,19 @@ import com.taller.spring.service.ClientManagementServiceI;
 
 @SpringBootApplication
 public class SpringMain implements CommandLineRunner {
-
+	
+	/** Entidad cliente */
 	Client client = new Client();
+	
+	/** Servicio cliente */
 	@Autowired
 	private ClientManagementServiceI clientService;
 
+	/**
+	 * Método principal.
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(SpringMain.class, args);
 	}

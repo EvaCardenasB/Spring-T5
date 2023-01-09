@@ -15,6 +15,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.taller.spring.entity.Client;
 import com.taller.spring.repository.ClientRepository;
 
+/**
+ * 
+ * Controlador para llevar a cabo las acciones del cliente
+ * @author Eva
+ *
+ */
 @Controller
 @RequestMapping(path = "/client")
 public class ClientController {
@@ -32,17 +38,6 @@ public class ClientController {
 		model.addAttribute("clients", clienteRepository.findAll());
 		return "/mostrar_clientes";
 	}
-	
-	@GetMapping(value = "/buscar")
-	public String buscarCliente(Model model) {
-		return "/buscar_clientes";
-	}
-	
-	/*@GetMapping(value = "/buscar/{name}")
-	public String buscarCliente(Model model,@PathVariable String name) {
-		model.addAttribute("clients", clienteRepository.findByName(name));
-		return "/buscar_clientes";
-	}*/
 
 	@GetMapping(value = "/editar/{id}")
 	public String mostrarFormularioEditar(@PathVariable long id, Model model) {
